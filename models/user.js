@@ -2,17 +2,14 @@ var mongoose = require('mongoose');
 var validate = require('mongoose-validator');
 var Schema = mongoose.Schema;
 var minute = require('mongoose-minute');
-Todo = new Schema({
-	todo: {
-		type: String
-	},
+UserSchema = new Schema({
 	user: {
 		type: String,
 		minlength: 36
 	}
 });
-minute(Todo, {
+minute(UserSchema, {
   createdAt: 'createdAt'
 });
-Users = mongoose.model('Todos', Todo);
-module.exports = Todos;
+Users = mongoose.model('User', UserSchema);
+module.exports = Users;
