@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var config = require('./config');
-var User = require('./models/user.js');
 var port = process.env.PORT || 8080;
 var routes = require('./routes/routes.js')
 var cors = require('cors');
@@ -21,6 +20,6 @@ app.use(cookieParser())
 app.get('/', function(req, res) {
   res.send('Hello! The API is at http://localhost:' + port + '/api', req.cookies);
 });
-app.use('/api', routes);
+// app.use('/api', routes);
 app.listen(port);
 console.log('Magic happens at http://localhost:' + port);
