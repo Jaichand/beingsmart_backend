@@ -18,8 +18,8 @@ app.use(morgan('dev'));
 app.use(cookieParser())
 
 app.get('/', function(req, res) {
-  res.send('Hello! The API is at http://localhost:' + port + '/api', req.cookies);
+  console.log("Hey, I am here", req.cookies);
 });
-// app.use('/api', routes);
+app.use('/api', routes);
 app.listen(port);
 console.log('Magic happens at http://localhost:' + port);

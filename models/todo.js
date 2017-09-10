@@ -5,7 +5,7 @@ Todo = new Schema({
 	todo: {
 		type: String
 	},
-	user: {
+	userId: {
 		type: String,
 		minlength: 36
 	}
@@ -13,5 +13,5 @@ Todo = new Schema({
 minute(Todo, {
   createdAt: 'createdAt'
 });
-Users = mongoose.model('Todos', Todo);
+Todos = mongoose.model('Todos', Todo);
 module.exports = Todos;

@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var minute = require('mongoose-minute');
 UserSchema = new Schema({
-	user: {
+	id: {
 		type: String,
 		minlength: 36
 	}
