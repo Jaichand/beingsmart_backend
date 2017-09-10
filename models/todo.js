@@ -8,6 +8,10 @@ Todo = new Schema({
 	userId: {
 		type: String,
 		minlength: 36
+	},
+	archive: {
+		type: Boolean,
+		default: false
 	}
 });
 minute(Todo, {
