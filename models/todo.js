@@ -9,6 +9,12 @@ Todo = new Schema({
 		type: String,
 		minlength: 36
 	},
+	attachment: [{
+		name: String,
+		url: String,
+		fieldType:String,
+		originalName: String
+	}],
 	archive: {
 		type: Boolean,
 		default: false

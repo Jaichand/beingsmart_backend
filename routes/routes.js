@@ -4,6 +4,8 @@ var Todos = require('../models/todo.js');
 var config = require('../config');
 var Router = express.Router();
 var uuid = require('uuid/v1');
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
 app = express()
 
 Router.get('/', function(req, res) {
@@ -82,4 +84,27 @@ Router.post('/editTodo', function (req, res) {
 		});
 	})
 });
+
+Router.post('/upload', upload.single('file'), function (req, res, next) {
+  var file = []
+  file.push({
+      name: req.file.filename,
+      url: req.file.path,
+      originalName: req.file.originalname,
+      fieldType: req.file.fieldname
+    })
+
+  var todo = new Todos({
+    userId : req.headers['x-csrftoken'],
+    attachment: file
+  });
+  todo.save(function (err, addAttachment) {
+    if (err) {
+      console.log("Error message", err.message);
+      return res.status(500).send({success: false, error: err.message});
+    }
+    return res.status(200).send({success: true, attachment: addAttachment});
+  });
+});
+
 module.exports = Router;

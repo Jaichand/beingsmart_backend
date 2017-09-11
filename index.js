@@ -9,6 +9,8 @@ var port = process.env.PORT || 8081;
 var routes = require('./routes/routes.js')
 var cors = require('cors');
 var mongoUrl = config.mongo.url + config.mongo.dbName;
+var multer  = require('multer')
+
 console.log("mongoUrl", mongoUrl);
 mongoose.connect(mongoUrl);
 app.use(cors());
